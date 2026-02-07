@@ -1,4 +1,4 @@
-# Task Copilot
+# Task-Master
 
 A local-only task manager with an AI chat interface that converts messy raw text into structured tasks using a local Ollama language model. No cloud, no auth, everything runs on your machine.
 
