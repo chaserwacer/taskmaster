@@ -14,9 +14,6 @@ A local-only task manager with an AI chat interface that converts messy raw text
 - TinyDB
 
 ## Screenshots
-
-Development screenshots (in-repo):
-
 <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start">
    <img src="frontend/public/images/main%20page.jpeg" alt="Main page" style="width:300px;max-width:48%" />
    <img src="frontend/public/images/parsed.jpeg" alt="Parsed proposals" style="width:300px;max-width:48%" />
