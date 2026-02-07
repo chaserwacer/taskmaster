@@ -17,13 +17,12 @@ A local-only task manager with an AI chat interface that converts messy raw text
 
 Development screenshots (in-repo):
 
-<img src="frontend/public/images/main%20page.jpeg" alt="Main page" width="300" />
-
-<img src="frontend/public/images/create-task.jpeg" alt="Create task modal" width="300" />
-
-<img src="frontend/public/images/parsing.jpeg" alt="Parsing in progress" width="300" />
-
-<img src="frontend/public/images/parsed.jpeg" alt="Parsed proposals" width="300" />
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start">
+   <img src="frontend/public/images/main%20page.jpeg" alt="Main page" style="width:300px;max-width:48%" />
+   <img src="frontend/public/images/create-task.jpeg" alt="Create task modal" style="width:300px;max-width:48%" />
+   <img src="frontend/public/images/parsing.jpeg" alt="Parsing in progress" style="width:300px;max-width:48%" />
+   <img src="frontend/public/images/parsed.jpeg" alt="Parsed proposals" style="width:300px;max-width:48%" />
+</div>
 
 ## Prerequisites
 
