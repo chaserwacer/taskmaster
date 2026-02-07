@@ -28,8 +28,6 @@ A local-only task manager with an AI chat interface that converts messy raw text
      ```
      ollama pull phi4-mini:3.8b
      ```
-4. **MongoDB** (optional) — [mongodb.com/try/download/community](https://www.mongodb.com/try/download/community)
-   - Not required! The app automatically falls back to TinyDB (local JSON file) if MongoDB isn't installed.
 
 ## Quick Start (One Command)
 
