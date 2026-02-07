@@ -108,7 +108,7 @@ class TaskProposal(BaseModel):
     due_at: Optional[str] = None  # ISO string or null
     priority: Priority = Priority.medium
     is_complete: bool = False
-    confidence: float = Field(0.5, ge=0.0, le=1.0)
+    confidence: Optional[float] = Field(None, ge=0.0, le=1.0)
     assumptions: list[str] = Field(default_factory=list)
     requires_user_confirmation: bool = True
 

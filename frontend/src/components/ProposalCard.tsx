@@ -93,10 +93,11 @@ export default function ProposalCard({ proposal, index, onChange, onRemove }: Pr
         </div>
       )}
 
-      <div className="proposal-confidence">
-        Confidence: {(proposal.confidence * 100).toFixed(0)}%
-        {proposal.requires_user_confirmation && " — review recommended"}
-      </div>
+      {proposal.confidence != null && proposal.confidence <= 0.5 && (
+        <div className="proposal-confidence">
+          Review recommended
+        </div>
+      )}
     </div>
   );
 }

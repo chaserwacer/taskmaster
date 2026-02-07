@@ -46,7 +46,7 @@ export interface TaskProposal {
   due_at: string | null;
   priority: Priority;
   is_complete: boolean;
-  confidence: number;
+  confidence: number | null;
   assumptions: string[];
   requires_user_confirmation: boolean;
 }
