@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+"""FastAPI application entrypoint and lifespan management.
+
+This module wires the routes, middleware and a simple lifespan handler
+that ensures the database is connected on startup and closed on shutdown.
+"""
+
 import logging
 import os
 from contextlib import asynccontextmanager
@@ -18,6 +24,11 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Startup/shutdown tasks for the app.
+
+    Connects to the selected DB backend and optionally seeds demo data when
+    the `SEED_DATA` environment variable is set to `true`.
+    """
     # Startup
     await get_db()
     logger.info("Database connected")
@@ -55,4 +66,5 @@ app.include_router(chat_router)
 
 @app.get("/health")
 async def health():
+    """Simple health check endpoint returning status ok."""
     return {"status": "ok"}

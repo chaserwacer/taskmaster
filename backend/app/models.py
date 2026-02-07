@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+"""Pydantic models and enums used by the API.
+
+The module defines request/response models for tasks and the chat parser
+proposals. Validators normalize tags and enforce small convenience rules.
+"""
+
 from datetime import datetime
 from enum import Enum
 from typing import Optional

@@ -1,5 +1,12 @@
 from __future__ import annotations
 
+"""Database backend abstraction with MongoDB and TinyDB implementations.
+
+Provides a small `DBBackend` protocol so the rest of the app can use a
+single interface while the implementation may be Motor (MongoDB) or a
+local TinyDB fallback for convenience during development.
+"""
+
 import logging
 from typing import Any, Protocol
 
@@ -31,6 +38,12 @@ class MongoBackend:
     def __init__(self, client: AsyncIOMotorClient, db: AsyncIOMotorDatabase):
         self._client = client
         self._db = db
+
+    """MongoDB backend using Motor.
+
+    This class implements the minimal async operations used by the app and
+    converts Mongo ObjectId values to/from strings where appropriate.
+    """
 
     @staticmethod
     def _convert_ids(filter: dict) -> dict:
@@ -85,6 +98,12 @@ class TinyDBBackend:
         from tinydb import TinyDB
         self._db = TinyDB(path)
         self._counter = 0
+
+    """Simple TinyDB-based backend used as a fallback when Mongo is unavailable.
+
+    This imitates a subset of the Mongo API the application expects. Intended
+    for local development and demo purposes only.
+    """
 
     def _table(self, collection: str):
         return self._db.table(collection)

@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+"""Application configuration using pydantic-settings.
+
+Expose typed settings with reasonable defaults sourced from environment
+variables. Use `get_settings()` to obtain a cached Settings instance.
+"""
+
 import os
 from functools import lru_cache
 

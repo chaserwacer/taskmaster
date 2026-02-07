@@ -13,6 +13,18 @@ A local-only task manager with an AI chat interface that converts messy raw text
 - Overdue highlighting
 - MongoDB primary DB with automatic TinyDB fallback
 
+## Screenshots
+
+Development screenshots (in-repo):
+
+![Main page](frontend/public/images/main%20page.jpeg)
+
+![Create task modal](frontend/public/images/create-task.jpeg)
+
+![Parsing in progress](frontend/public/images/parsing.jpeg)
+
+![Parsed proposals](frontend/public/images/parsed.jpeg)
+
 ## Prerequisites
 
 1. **Python 3.11+** — [python.org](https://www.python.org/downloads/)

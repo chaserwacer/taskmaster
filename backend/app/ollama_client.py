@@ -1,5 +1,13 @@
 from __future__ import annotations
 
+"""Helpers for calling an Ollama model and parsing structured proposals.
+
+This module constructs a strict system prompt, calls the local Ollama
+HTTP API, extracts JSON from possibly noisy model output, and validates the
+resulting proposals with Pydantic. It returns validated `TaskProposal`
+objects and any warnings encountered during parsing.
+"""
+
 import json
 import logging
 import re
@@ -58,7 +66,12 @@ def _build_user_prompt(text: str) -> str:
 
 
 def _extract_json(raw: str) -> dict | None:
-    """Try to extract a JSON object from possibly messy model output."""
+    """Attempt to locate and parse JSON from model output.
+
+    The model may return markdown fences or extra commentary; this helper
+    strips common wrappers and attempts several heuristics to extract a
+    JSON object or an array of proposals.
+    """
     # Strip markdown fences
     cleaned = re.sub(r"```(?:json)?\s*", "", raw)
     cleaned = cleaned.strip().rstrip("`")
@@ -91,7 +104,10 @@ def _extract_json(raw: str) -> dict | None:
 
 
 async def _call_ollama(system: str, user: str, settings=None) -> str:
-    """Call the Ollama generate/chat API."""
+    """Call the Ollama generate/chat API and return the model content.
+
+    Raises on non-2xx responses so callers can capture and produce warnings.
+    """
     if settings is None:
         settings = get_settings()
 

@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+"""Chat-related routes.
+
+Exposes `/chat/parse` to convert raw text into proposals and `/chat/commit`
+to persist reviewed proposals as tasks.
+"""
+
 from datetime import datetime, timezone
 
 from fastapi import APIRouter

@@ -9,9 +9,14 @@ interface Props {
 
 const PRIORITIES: Priority[] = ["low", "medium", "high", "urgent"];
 
+/**
+ * Editable card for a single parsed task proposal.
+ *
+ * Kept intentionally small — the parent manages saving and validation.
+ */
 export default function ProposalCard({ proposal, index, onChange, onRemove }: Props) {
-  const update = (field: string, value: unknown) => {
-    onChange(index, { ...proposal, [field]: value });
+  const update = (field: keyof TaskProposal, value: unknown) => {
+    onChange(index, { ...proposal, [field]: value } as TaskProposal);
   };
 
   return (
@@ -25,11 +30,7 @@ export default function ProposalCard({ proposal, index, onChange, onRemove }: Pr
 
       <div className="proposal-field">
         <label>Name</label>
-        <input
-          type="text"
-          value={proposal.name}
-          onChange={(e) => update("name", e.target.value)}
-        />
+        <input type="text" value={proposal.name} onChange={(e) => update("name", e.target.value)} />
       </div>
 
       <div className="proposal-field">
@@ -60,10 +61,7 @@ export default function ProposalCard({ proposal, index, onChange, onRemove }: Pr
 
       <div className="proposal-field">
         <label>Priority</label>
-        <select
-          value={proposal.priority}
-          onChange={(e) => update("priority", e.target.value)}
-        >
+        <select value={proposal.priority} onChange={(e) => update("priority", e.target.value as Priority)}>
           {PRIORITIES.map((p) => (
             <option key={p} value={p}>
               {p.charAt(0).toUpperCase() + p.slice(1)}
@@ -93,11 +91,7 @@ export default function ProposalCard({ proposal, index, onChange, onRemove }: Pr
         </div>
       )}
 
-      {proposal.confidence != null && proposal.confidence <= 0.5 && (
-        <div className="proposal-confidence">
-          Review recommended
-        </div>
-      )}
+      {proposal.confidence != null && proposal.confidence <= 0.5 && <div className="proposal-confidence">Review recommended</div>}
     </div>
   );
 }

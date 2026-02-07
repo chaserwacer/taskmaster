@@ -1,5 +1,11 @@
 from __future__ import annotations
 
+"""Task CRUD HTTP routes.
+
+Provides endpoints for listing, creating, updating and deleting tasks. The
+list endpoint supports simple filtering and sorting query parameters.
+"""
+
 from datetime import datetime, timezone, timedelta
 from typing import Optional
 
